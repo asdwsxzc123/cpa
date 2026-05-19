@@ -392,8 +392,8 @@ func (s *Server) setupRoutes() {
 		v1.POST("/videos/edits", openaiHandlers.XAIVideosEdits)
 		v1.POST("/videos/extensions", openaiHandlers.XAIVideosExtensions)
 		v1.GET("/videos/:request_id", openaiHandlers.XAIVideosRetrieve)
-		v1.POST("/messages", claudeCodeHandlers.ClaudeMessages)
-		v1.POST("/messages/count_tokens", claudeCodeHandlers.ClaudeCountTokens)
+		v1.POST("/messages", ClaudeCLIOnlyMiddleware(), claudeCodeHandlers.ClaudeMessages)
+		v1.POST("/messages/count_tokens", ClaudeCLIOnlyMiddleware(), claudeCodeHandlers.ClaudeCountTokens)
 		v1.GET("/responses", openaiResponsesHandlers.ResponsesWebsocket)
 		v1.POST("/responses", openaiResponsesHandlers.Responses)
 		v1.POST("/responses/compact", openaiResponsesHandlers.Compact)
@@ -1544,6 +1544,25 @@ func AuthMiddleware(manager *sdkaccess.Manager) gin.HandlerFunc {
 			log.Errorf("authentication middleware error: %v", err)
 		}
 		c.AbortWithStatusJSON(statusCode, gin.H{"error": err.Message})
+	}
+}
+
+// ClaudeCLIOnlyMiddleware rejects requests whose User-Agent does not start
+// with "claude-cli" (e.g. claude-cli/2.1.143 (external, claude-vscode, ...)).
+// It is applied to the native Claude/Anthropic endpoints so that only
+// Claude Code (CLI / VSCode / agent-sdk) clients can reach them.
+func ClaudeCLIOnlyMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		if !strings.HasPrefix(c.GetHeader("User-Agent"), "claude-cli") {
+			c.AbortWithStatusJSON(http.StatusBadGateway, gin.H{
+				"error": gin.H{
+					"type":    "permission_error",
+					"message": "Only Claude Code client is allowed to access this endpoint.",
+				},
+			})
+			return
+		}
+		c.Next()
 	}
 }
 

@@ -197,7 +197,7 @@ Shadow AI 是一款专为受限环境设计的 AI 辅助工具。提供无窗口
 
 原生 macOS SwiftUI 应用，用于监控 CLIProxyAPI 池中的 ChatGPT/Codex 账号额度。通过 Management API 展示账号可用状态、Plus 基准容量、5 小时与周额度进度条、套餐权重和恢复预测。
 
-> [!NOTE]  
+> [!NOTE]
 > 如果你开发了基于 CLIProxyAPI 的项目，请提交一个 PR（拉取请求）将其添加到此列表中。
 
 ## 更多选择
@@ -218,7 +218,7 @@ OmniRoute 是一个面向多供应商大语言模型的 AI 网关：它提供兼
 
 一个公开的 CLIProxyAPI 兼容二开版本和配套管理面板，尽量保持与上游一致的使用方式，同时恢复内置使用量统计，并补充缓存命中率、首字响应时间、TPS 记录和面向 Docker 自托管的安装说明。
 
-> [!NOTE]  
+> [!NOTE]
 > 如果你开发了 CLIProxyAPI 的移植或衍生项目，请提交 PR 将其添加到此列表中。
 
 ## 许可证
@@ -226,9 +226,13 @@ OmniRoute 是一个面向多供应商大语言模型的 AI 网关：它提供兼
 此项目根据 MIT 许可证授权 - 有关详细信息，请参阅 [LICENSE](LICENSE) 文件。
 
 ## 写给所有中国网友的
-
+   systemctl --user enable cliproxyapi.service
+   systemctl --user start cliproxyapi.service
+   systemctl --user restart cliproxyapi.service
+   systemctl --user status cliproxyapi.service
 QQ 群：188637136（满）、1081218164
 
-或
+或\
+ 123/root/cliproxyapi
 
 Telegram 群：https://t.me/CLIProxyAPI
