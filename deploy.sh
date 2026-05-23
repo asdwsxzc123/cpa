@@ -141,7 +141,6 @@ install_from_binary() {
   mkdir -p "$out_dir"
 
   local tmp; tmp="$(mktemp -d)"
-  trap 'rm -rf "$tmp"' RETURN
 
   # Save to a temp file, detect tar.gz vs raw binary by extension/magic.
   local tmpfile="$tmp/payload"
@@ -169,6 +168,7 @@ install_from_binary() {
 
   echo "$version" > "$INSTALL_DIR/version.txt"
   ln -sfn "$out_dir/$BIN_NAME" "$INSTALL_DIR/$BIN_NAME"
+  rm -rf "$tmp"
   log_success "Binary installed at $out_dir/$BIN_NAME (version: $version)"
 }
 
