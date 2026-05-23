@@ -11,7 +11,11 @@ So you can use local or multi-account CLI access with OpenAI(include Responses)/
 ##
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/asdwsxzc123/cpa/main/deploy.sh)"
 
-systemctl --user status cliproxyapi.service
+  systemctl --user status cliproxyapi        # 状态
+  systemctl --user restart cliproxyapi       # 重启
+  systemctl --user stop cliproxyapi          # 停
+  journalctl --user -u cliproxyapi -f        # 跟随日志
+  journalctl --user -u cliproxyapi -n 100 --no-pager   # 看最近 100 行
 
 ## Overview
 

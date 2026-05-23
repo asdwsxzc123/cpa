@@ -5,6 +5,9 @@ host: ""
 # Server port
 port: 8317
 
+debug: false
+request-log: true       # 日志
+logging-to-file: true
 # TLS settings for HTTPS. When enabled, the server listens with the provided certificate and key.
 tls:
   enable: false
