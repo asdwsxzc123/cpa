@@ -16,16 +16,16 @@ BIN_NAME="cli-proxy-api"
 KEEP_VERSIONS=2
 
 REPO_URL="${CLIPROXY_REPO_URL:-https://github.com/asdwsxzc123/cpa.git}"
-REPO_REF="${CLIPROXY_REPO_REF:-v7.1.17}"   # pinned tag; override via CLIPROXY_REPO_REF
+REPO_REF="${CLIPROXY_REPO_REF:-v7.1.18}"   # pinned tag; override via CLIPROXY_REPO_REF
 WORK_DIR="${CLIPROXY_WORK_DIR:-$HOME/.cache/cliproxyapi-src}"
 
 # Binary download mode is the default: fetch prebuilt asset from this repo's
 # GitHub Releases. To fall back to source build, pass CLIPROXY_BIN_URL= (empty).
-# CLIPROXY_BIN_VERSION  release tag (default: v7.1.17); also written to version.txt
+# CLIPROXY_BIN_VERSION  release tag (default: v7.1.18); also written to version.txt
 # CLIPROXY_BIN_URL      override binary URL entirely (empty = source build)
 # CLIPROXY_CFG_URL      override config.example.yaml URL
 # CLIPROXY_AUTH_HEADER  optional HTTP header for auth (e.g. "Authorization: token ghp_xxx")
-BIN_VERSION="${CLIPROXY_BIN_VERSION:-v7.1.17}"
+BIN_VERSION="${CLIPROXY_BIN_VERSION:-v7.1.18}"
 case "$(uname -m)" in
   x86_64|amd64)   _BIN_ARCH=amd64 ;;
   aarch64|arm64)  _BIN_ARCH=aarch64 ;;
@@ -373,7 +373,7 @@ Env:
   CLIPROXY_INSTALL_DIR   Override install dir (default: \$HOME/cliproxyapi)
 
   -- Binary-download mode (DEFAULT: pulls release for current arch) --
-  CLIPROXY_BIN_VERSION   Release tag (default: v7.1.17)
+  CLIPROXY_BIN_VERSION   Release tag (default: v7.1.18)
   CLIPROXY_BIN_URL       Override binary URL; set EMPTY to use source build
   CLIPROXY_CFG_URL       Override config.example.yaml URL
   CLIPROXY_AUTH_HEADER   Optional HTTP header for auth, e.g.
@@ -382,7 +382,7 @@ Env:
   -- Source-build mode (set CLIPROXY_BIN_URL= to enable) --
   CLIPROXY_REPO_URL      Git repo to clone when no local source
                          (default: https://github.com/asdwsxzc123/cpa.git)
-  CLIPROXY_REPO_REF      Tag / branch / commit to check out (default: v7.1.17)
+  CLIPROXY_REPO_REF      Tag / branch / commit to check out (default: v7.1.18)
   CLIPROXY_WORK_DIR      Where to clone source (default: \$HOME/.cache/cliproxyapi-src)
 EOF
 }
