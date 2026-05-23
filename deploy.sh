@@ -15,8 +15,8 @@ SERVICE_FILE="$HOME/.config/systemd/user/${SERVICE_NAME}.service"
 BIN_NAME="cli-proxy-api"
 KEEP_VERSIONS=2
 
-REPO_URL="${CLIPROXY_REPO_URL:-https://github.com/router-for-me/CLIProxyAPI.git}"
-REPO_REF="${CLIPROXY_REPO_REF:-}"   # optional tag/branch/commit
+REPO_URL="${CLIPROXY_REPO_URL:-https://github.com/asdwsxzc123/cpa.git}"
+REPO_REF="${CLIPROXY_REPO_REF:-v7.1.17}"   # pinned tag; override via CLIPROXY_REPO_REF
 WORK_DIR="${CLIPROXY_WORK_DIR:-$HOME/.cache/cliproxyapi-src}"
 
 # Binary download mode: when set, skip git clone + go build and just fetch the binary.
@@ -361,7 +361,7 @@ Env:
 
   -- Source-build mode (default) --
   CLIPROXY_REPO_URL      Git repo to clone when no local source (default: upstream)
-  CLIPROXY_REPO_REF      Tag / branch / commit to check out (default: HEAD)
+  CLIPROXY_REPO_REF      Tag / branch / commit to check out (default: v7.1.17)
   CLIPROXY_WORK_DIR      Where to clone source (default: \$HOME/.cache/cliproxyapi-src)
 
   -- Binary-download mode (set CLIPROXY_BIN_URL to enable) --
